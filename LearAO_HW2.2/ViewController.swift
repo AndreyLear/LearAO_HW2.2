@@ -26,6 +26,8 @@ class ViewController: UIViewController {
     private var greenColor: CGFloat = 0
     private var blueColor: CGFloat = 0
     
+    private let oneTone: Float = 0.00392 // 1 / 255
+    
     // MARK: - Live Cycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,9 +40,14 @@ class ViewController: UIViewController {
         greenSlider.minimumTrackTintColor = UIColor(red: 0.196, green: 0.764, blue: 0.528, alpha: 1)
         blueSlider.minimumTrackTintColor = UIColor(red: 0.26, green: 0.601, blue: 1, alpha: 1)
 
-        redLabel.text = String(format: "%.2f", redSlider.value)
-        greenLabel.text = String(format: "%.2f", greenSlider.value)
-        blueLabel.text = String(format: "%.2f", blueSlider.value)
+//        redLabel.text = String(format: "%.2f", redSlider.value)
+//        greenLabel.text = String(format: "%.2f", greenSlider.value)
+//        blueLabel.text = String(format: "%.2f", blueSlider.value)
+        
+        // Normal RGB
+        redLabel.text = "\(Int(redSlider.value / oneTone))"
+        greenLabel.text = "\(Int(greenSlider.value / oneTone))"
+        blueLabel.text = "\(Int(blueSlider.value / oneTone))"
     }
     
     override func viewDidLayoutSubviews() {
@@ -61,15 +68,18 @@ class ViewController: UIViewController {
     
     // MARK: - IB Actions
     @IBAction func changeRedColor() {
-        redLabel.text = String(format: "%.2f", redSlider.value)
+//      redLabel.text = String(format: "%.2f", redSlider.value)
+        redLabel.text = "\(Int(redSlider.value / oneTone))" // from 0 to 255
     }
     
     @IBAction func changeGreenColor() {
-        greenLabel.text = String(format: "%.2f", greenSlider.value)
+//      greenLabel.text = String(format: "%.2f", greenSlider.value)
+        greenLabel.text = "\(Int(greenSlider.value / oneTone))" // from 0 to 255
     }
     
     @IBAction func changeBlueColor() {
-        blueLabel.text = String(format: "%.2f", blueSlider.value)
+//      blueLabel.text = String(format: "%.2f", blueSlider.value)
+        blueLabel.text = "\(Int(blueSlider.value / oneTone))" // from 0 to 255
     }
     
     // MARK: - Private Methods
