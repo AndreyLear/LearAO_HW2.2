@@ -9,21 +9,24 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    // MARK: - Private properties
+    @IBOutlet weak var substractView: UIView!
+    
+    @IBOutlet weak var redLabel: UILabel!
+    @IBOutlet weak var greenLabel: UILabel!
+    @IBOutlet weak var blueLabel: UILabel!
+    
+    @IBOutlet weak var redSlider: UISlider!
+    @IBOutlet weak var greenSlider: UISlider!
+    @IBOutlet weak var blueSlider: UISlider!
+    
+    // MARK: - Private properties
     private var redColor: CGFloat = 0
     private var greenColor: CGFloat = 0
     private var blueColor: CGFloat = 0
     
-    @IBOutlet weak var substractView: UIView!
-    
-    @IBOutlet weak var redLabel: UILabel!
-    @IBOutlet weak var redSlider: UISlider!
-    
-    @IBOutlet weak var greenLabel: UILabel!
-    @IBOutlet weak var greenSlider: UISlider!
-    
-    @IBOutlet weak var blueLabel: UILabel!
-    @IBOutlet weak var blueSlider: UISlider!
-    
+    // MARK: - Live Cycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -56,6 +59,7 @@ class ViewController: UIViewController {
             alpha: 1)
     }
     
+    // MARK: - IB Actions
     @IBAction func changeRedColor() {
         redLabel.text = String(format: "%.2f", redSlider.value)
     }
@@ -68,6 +72,7 @@ class ViewController: UIViewController {
         blueLabel.text = String(format: "%.2f", blueSlider.value)
     }
     
+    // MARK: - Private Methods
     private func changeColor(slider: UISlider, color: inout CGFloat) -> CGFloat {
         color = CGFloat(slider.value)
         
