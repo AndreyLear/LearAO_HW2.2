@@ -28,9 +28,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupSliderValues(slider: &redSlider, value: Float.random(in: 0...1))
-        setupSliderValues(slider: &greenSlider, value: Float.random(in: 0...1))
-        setupSliderValues(slider: &blueSlider, value: Float.random(in: 0...1))
+        setupSliderValues(slider: &redSlider)
+        setupSliderValues(slider: &greenSlider)
+        setupSliderValues(slider: &blueSlider)
         
         redSlider.minimumTrackTintColor = UIColor(red: 1, green: 0.404, blue: 0.373, alpha: 1)
         greenSlider.minimumTrackTintColor = UIColor(red: 0.196, green: 0.764, blue: 0.528, alpha: 1)
@@ -56,11 +56,11 @@ class ViewController: UIViewController {
     @IBAction func setColor(_ sender: UISlider) {
         switch sender {
         case redSlider:
-            redLabel.text = "\(Int(redSlider.value / oneTone))"
+            redLabel.text = convertSliderValueToRGB(for: redSlider)
         case greenSlider:
-            greenLabel.text = "\(Int(greenSlider.value / oneTone))"
+            greenLabel.text = convertSliderValueToRGB(for: greenSlider)
         case blueSlider:
-            blueLabel.text = "\(Int(blueSlider.value / oneTone))"
+            blueLabel.text = convertSliderValueToRGB(for: blueSlider)
         default:
             break
         }
@@ -69,8 +69,8 @@ class ViewController: UIViewController {
     }
     
     // MARK: - Private Methods
-    private func setupSliderValues(slider: inout UISlider, value: Float) {
-        slider.value = value
+    private func setupSliderValues(slider: inout UISlider) {
+        slider.value = Float.random(in: 0...1)
         slider.minimumValue = 0
         slider.maximumValue = 1
     }
@@ -82,6 +82,10 @@ class ViewController: UIViewController {
             blue: CGFloat(CGFloat(blueSlider.value)),
             alpha: 1
         )
+    }
+    
+    private func convertSliderValueToRGB(for slider: UISlider) -> String {
+        "\(Int(slider.value / oneTone))"
     }
 }
 
