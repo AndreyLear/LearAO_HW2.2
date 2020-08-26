@@ -28,27 +28,28 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupSliderValues(slider: &redSlider)
-        setupSliderValues(slider: &greenSlider)
-        setupSliderValues(slider: &blueSlider)
+        redSlider.value = setupSliderValues()
+        greenSlider.value = setupSliderValues()
+        blueSlider.value = setupSliderValues()
         
+        // Меняем цвет минимального значения слайдера
         redSlider.minimumTrackTintColor = UIColor(red: 1, green: 0.404, blue: 0.373, alpha: 1)
         greenSlider.minimumTrackTintColor = UIColor(red: 0.196, green: 0.764, blue: 0.528, alpha: 1)
         blueSlider.minimumTrackTintColor = UIColor(red: 0.26, green: 0.601, blue: 1, alpha: 1)
         
-        // Normal RGB
-        redLabel.text = "\(Int(redSlider.value / oneTone))"
-        greenLabel.text = "\(Int(greenSlider.value / oneTone))"
-        blueLabel.text = "\(Int(blueSlider.value / oneTone))"
+        // Присваение значений лейблам слайдеров
+        redLabel.text = convertingSlidersValueToRGB(for: redSlider)
+        greenLabel.text = convertingSlidersValueToRGB(for: greenSlider)
+        blueLabel.text = convertingSlidersValueToRGB(for: blueSlider)
         
+        // Параметры подложки
         substractView.layer.cornerRadius = 8
         substractView.layer.shadowColor = UIColor.black.cgColor
         substractView.layer.shadowOpacity = 0.15
         substractView.layer.shadowOffset = .init(width: 0, height: 2)
         substractView.layer.shadowRadius = 3
         
-        // Setting up a view background
-        
+        // Установка первоначального цвета для View
         setupViewBackgroundColor()
     }
     
@@ -69,10 +70,8 @@ class ViewController: UIViewController {
     }
     
     // MARK: - Private Methods
-    private func setupSliderValues(slider: inout UISlider) {
-        slider.value = Float.random(in: 0...1)
-        slider.minimumValue = 0
-        slider.maximumValue = 1
+    private func setupSliderValues() -> Float {
+        Float.random(in: 0...1)
     }
     
     private func setupViewBackgroundColor() {
