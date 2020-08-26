@@ -22,10 +22,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var blueSlider: UISlider!
     
     // MARK: - Private properties
-    private var redColor: CGFloat = 0
-    private var greenColor: CGFloat = 0
-    private var blueColor: CGFloat = 0
-    
     private let oneTone: Float = 0.00392 // 1 / 255
     
     // MARK: - Live Cycle Methods
@@ -39,18 +35,12 @@ class ViewController: UIViewController {
         redSlider.minimumTrackTintColor = UIColor(red: 1, green: 0.404, blue: 0.373, alpha: 1)
         greenSlider.minimumTrackTintColor = UIColor(red: 0.196, green: 0.764, blue: 0.528, alpha: 1)
         blueSlider.minimumTrackTintColor = UIColor(red: 0.26, green: 0.601, blue: 1, alpha: 1)
-
-//        redLabel.text = String(format: "%.2f", redSlider.value)
-//        greenLabel.text = String(format: "%.2f", greenSlider.value)
-//        blueLabel.text = String(format: "%.2f", blueSlider.value)
         
         // Normal RGB
         redLabel.text = "\(Int(redSlider.value / oneTone))"
         greenLabel.text = "\(Int(greenSlider.value / oneTone))"
         blueLabel.text = "\(Int(blueSlider.value / oneTone))"
-    }
-    
-    override func viewDidLayoutSubviews() {
+        
         substractView.layer.cornerRadius = 8
         substractView.layer.shadowColor = UIColor.black.cgColor
         substractView.layer.shadowOpacity = 0.15
@@ -59,40 +49,39 @@ class ViewController: UIViewController {
         
         // Setting up a view background
         
-        view.backgroundColor = UIColor.init(
-            red: changeColor(slider: redSlider, color: &redColor),
-            green: changeColor(slider: greenSlider, color: &greenColor),
-            blue: changeColor(slider: blueSlider, color: &blueColor),
-            alpha: 1)
+        setupViewBackgroundColor()
     }
     
     // MARK: - IB Actions
-    @IBAction func changeRedColor() {
-//      redLabel.text = String(format: "%.2f", redSlider.value)
-        redLabel.text = "\(Int(redSlider.value / oneTone))" // from 0 to 255
-    }
-    
-    @IBAction func changeGreenColor() {
-//      greenLabel.text = String(format: "%.2f", greenSlider.value)
-        greenLabel.text = "\(Int(greenSlider.value / oneTone))" // from 0 to 255
-    }
-    
-    @IBAction func changeBlueColor() {
-//      blueLabel.text = String(format: "%.2f", blueSlider.value)
-        blueLabel.text = "\(Int(blueSlider.value / oneTone))" // from 0 to 255
+    @IBAction func setColor(_ sender: UISlider) {
+        switch sender {
+        case redSlider:
+            redLabel.text = "\(Int(redSlider.value / oneTone))"
+        case greenSlider:
+            greenLabel.text = "\(Int(greenSlider.value / oneTone))"
+        case blueSlider:
+            blueLabel.text = "\(Int(blueSlider.value / oneTone))"
+        default:
+            break
+        }
+        
+        setupViewBackgroundColor()
     }
     
     // MARK: - Private Methods
-    private func changeColor(slider: UISlider, color: inout CGFloat) -> CGFloat {
-        color = CGFloat(slider.value)
-        
-        return color
-    }
-    
     private func setupSliderValues(slider: inout UISlider, value: Float) {
         slider.value = value
         slider.minimumValue = 0
         slider.maximumValue = 1
+    }
+    
+    private func setupViewBackgroundColor() {
+        view.backgroundColor = UIColor.init(
+            red: CGFloat(CGFloat(redSlider.value)),
+            green: CGFloat(CGFloat(greenSlider.value)),
+            blue: CGFloat(CGFloat(blueSlider.value)),
+            alpha: 1
+        )
     }
 }
 

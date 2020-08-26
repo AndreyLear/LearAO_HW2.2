@@ -40,7 +40,7 @@
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="uXM-Ex-mcJ">
                                                 <rect key="frame" x="43.333333333333343" y="0.0" width="292.66666666666663" height="31"/>
                                                 <connections>
-                                                    <action selector="changeRedColor" destination="BYZ-38-t0r" eventType="valueChanged" id="5TO-B2-khC"/>
+                                                    <action selector="setColor:" destination="BYZ-38-t0r" eventType="valueChanged" id="JnJ-HC-H4t"/>
                                                 </connections>
                                             </slider>
                                         </subviews>
@@ -60,7 +60,7 @@
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="YpT-cM-2QE">
                                                 <rect key="frame" x="43.333333333333343" y="0.0" width="292.66666666666663" height="31"/>
                                                 <connections>
-                                                    <action selector="changeGreenColor" destination="BYZ-38-t0r" eventType="valueChanged" id="LNr-zw-hcG"/>
+                                                    <action selector="setColor:" destination="BYZ-38-t0r" eventType="valueChanged" id="HbC-Gb-Gxj"/>
                                                 </connections>
                                             </slider>
                                         </subviews>
@@ -80,7 +80,7 @@
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="nPj-pr-qlr">
                                                 <rect key="frame" x="43.333333333333343" y="0.0" width="292.66666666666663" height="31"/>
                                                 <connections>
-                                                    <action selector="changeBlueColor" destination="BYZ-38-t0r" eventType="valueChanged" id="vTZ-LO-VbC"/>
+                                                    <action selector="setColor:" destination="BYZ-38-t0r" eventType="valueChanged" id="QVm-c7-3FK"/>
                                                 </connections>
                                             </slider>
                                         </subviews>
