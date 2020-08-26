@@ -56,11 +56,11 @@ class ViewController: UIViewController {
     @IBAction func setColor(_ sender: UISlider) {
         switch sender {
         case redSlider:
-            redLabel.text = convertSliderValueToRGB(for: redSlider)
+            redLabel.text = convertingSlidersValueToRGB(for: redSlider)
         case greenSlider:
-            greenLabel.text = convertSliderValueToRGB(for: greenSlider)
+            greenLabel.text = convertingSlidersValueToRGB(for: greenSlider)
         case blueSlider:
-            blueLabel.text = convertSliderValueToRGB(for: blueSlider)
+            blueLabel.text = convertingSlidersValueToRGB(for: blueSlider)
         default:
             break
         }
@@ -84,7 +84,7 @@ class ViewController: UIViewController {
         )
     }
     
-    private func convertSliderValueToRGB(for slider: UISlider) -> String {
+    private func convertingSlidersValueToRGB(for slider: UISlider) -> String {
         "\(Int(slider.value / oneTone))"
     }
 }
